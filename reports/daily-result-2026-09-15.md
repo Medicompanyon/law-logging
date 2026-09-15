@@ -21,11 +21,11 @@
 - `b6e1c9a` `fix: accept synthetic environment maps in validation`
 - `0770cc4` `test: validate responsive UI in CI`
 - `1ab441c` `fix: update Drizzle ORM security patch`
-- 최종 PR 범위: 29개 파일, 724줄 추가.
+- 최종 PR 범위: 30개 파일, 789줄 추가.
 
 ## 테스트 및 검증 결과
 
-- GitHub Actions CI run #4: 성공.
+- GitHub Actions 최종 PR CI run #5와 병합 후 `main` CI run #6: 성공.
 - npm 운영 의존성 감사: 취약점 0건.
 - PostgreSQL 17 서비스 상태와 Drizzle 마이그레이션: 통과.
 - ESLint: 통과.
@@ -42,7 +42,7 @@
 
 ## 남은 위험과 추가 피드백
 
-- 전체 npm 설치 결과에는 개발 전용 의존성의 moderate 경고 6건이 남아 있다. 상세 의존 경로와 수정 호환성을 별도 보안 작업으로 검토해야 한다.
+- 전체 npm 설치 결과에는 개발 전용 의존성의 moderate 경고 6건이 남아 있다. 상세 의존 경로와 수정 호환성은 [#11](https://github.com/Medicompanyon/law-logging/issues/11)에서 검토한다.
 - `package-lock.json`이 아직 저장소에 없어 CI가 `npm install`을 사용한다. lockfile을 생성한 뒤 `npm ci`로 전환해야 재현성을 높일 수 있다.
 - Playwright는 구조, 반응형 넘침과 키보드 진입을 검증하지만 실제 디자인 회귀 비교 이미지는 아직 저장하지 않는다.
 - 인증·소유권 검사가 아직 구현되지 않았으므로 합성 개발 데이터 외 실제 개인정보를 연결해서는 안 된다.
@@ -50,7 +50,8 @@
 
 ## 관련 이슈 상태
 
-- #8 Foundation: 구현 및 자동 검증 완료. PR #10이 `main`에 반영되면 닫을 수 있다.
+- #8 Foundation: PR #10을 `main` 커밋 `5a3bdae`로 반영하고 완료 종료했다.
+- #11 Security: 개발 의존성 moderate 경고와 lockfile·`npm ci` 전환을 위한 후속 이슈를 생성했다.
 - #3 Architecture: 다음 선행 작업. User, PolicyDocument, PolicyParagraph, Comment, DocumentVersion, AuditEvent 모델과 서버 소유권 정책을 구현한다.
 - #1 Auth와 #7 Profile: #3의 데이터·권한 경계 확정 후 순차 착수한다.
 - #9 MVP EPIC: #8 완료 후 #3을 진행하는 상태로 갱신이 필요하다.
